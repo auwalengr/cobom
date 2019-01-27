@@ -1,0 +1,195 @@
+﻿@model IEnumerable<cobom.Models.newarchievementDetail>
+@{
+    ViewBag.Title = "achievements";
+
+}
+<script src="~/Scripts/chartbudle.js"></script>
+<script src="~/Scripts/ultil.js"></script>
+<style> 
+.block{
+            border: 1px solid red;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .circle{
+              border: 2px solid red;
+            
+            border-radius: 200px;
+            color: mistyrose;
+            height: 200px;
+            font-weight: bold;
+            width: 200px;
+        }
+		.circle span{
+			display: table-cell;
+			padding-top:40%;
+		}
+</style>
+@*<div class="col-md-2">
+        <p class="circle" align="center"><span>Some Text here Some text here Some text here</span></p>
+
+    </div>*@
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>Electricity</li>
+        </ul>
+    </div>
+</div>
+<!-- //short-->
+
+<section class="about py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+        <div class="jst-abut-wls mb-lg-4 mb-md-3 mb-3 ">
+            <h5>
+                Electricity Achievements
+            </h5>
+            
+        </div>
+        <div class="row its-abt-info">
+            <div class="col-lg-6 col-md-6 col-sm-6 about-list-w3layouts">
+               
+                <div class="abt-txt-sub">
+                   
+                  @foreach (var date in ViewBag.label)
+                  {
+                    <h4>@date</h4>
+                        <div class="txt-para-list mt-3">
+                           <ul>
+                               @{ 
+                                   var list = from d in Model.Where(x => x.date.ToString() == date) select d;
+                               }
+
+                               @foreach (var item in list)
+                               {
+                                 
+                                    <li>@item.name @item.amount@item.newarchievement.unit <br /></li>
+                                 
+                               }
+                           </ul>
+                        </div>
+                        <hr />
+                  }
+                    
+                    
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 about-list-w3layouts">
+               @* chart *@
+                <canvas id="canvas"></canvas>
+                @*<button id="randomizeData">Randomize Data</button>*@
+
+                @*<div class="abt-txt-sub">
+                   
+                    <div class="txt-para-list mt-3">
+                        <p>delectus reiciendis maiores alias consequatur aut.maiores alias Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</p>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+       
+    </div>
+</section>
+<script>
+
+    //label
+    var labelArray = '@Html.Raw(Json.Encode(ViewBag.label ))';
+    var labelObj = JSON.parse(labelArray);
+    var alabel = labelObj;
+
+    //datesets
+    var datasetsArray = '@Html.Raw(Json.Encode(ViewBag.datasets))';
+    var datasetsObj = JSON.parse(datasetsArray);
+    var aDatasets = datasetsObj;
+
+    //data1
+    var datas1Array = '@Html.Raw(Json.Encode(ViewBag.datas1))';
+    var datas1Obj = JSON.parse(datas1Array);
+    var datas1 = datas1Obj;
+
+    //data2
+    @*var datas2Array = '@Html.Raw(Json.Encode(ViewBag.datas2))';
+    var datas2Obj = JSON.parse(datas2Array);
+    var datas2 = datas2Obj;*@
+
+    //chart 1
+    var lineChartData = {
+
+        labels: alabel,
+       // labels: [arryObj],
+        datasets: [{
+            //1
+                label: aDatasets[0],
+				borderColor: window.chartColors.red,
+				backgroundColor: window.chartColors.red,
+				fill: false,
+				data: datas1,
+				yAxisID: 'y-axis-1'
+        }]
+    };
+
+    //chart 2
+    var lineChartData2 = {
+
+        labels: alabel,
+        // labels: [arryObj],
+        datasets: [{
+            //1
+            label: aDatasets[0],
+            borderColor: window.chartColors.red,
+            backgroundColor: window.chartColors.red,
+            fill: true,
+            data: datas1,
+            yAxisID: 'y-axis-1'
+        }]
+    };
+
+        window.onload = function() {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myLine = Chart.Line(ctx, {
+                data: lineChartData,
+				options: {
+                    responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+                        display: true,
+						text: 'Electricity Achievement Chart'
+
+                    },
+					scales: {
+                        yAxes: [{
+                            type: 'bar', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						},
+                        {
+							// grid line settings
+							gridLines: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
+                }
+            });
+        };
+
+        document.getElementById('randomizeData').addEventListener('click', function() {
+            lineChartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return randomScalingFactor();
+                });
+            });
+
+            window.myLine.update();
+        });
+</script>

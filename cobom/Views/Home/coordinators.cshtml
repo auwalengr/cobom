@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<cobom.Models.coordinator>
+@{
+    ViewBag.Title = "coordinators";
+}
+
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>About</li>
+        </ul>
+    </div>
+</div>
+<!-- //short-->
+  <!--contact -->
+<section class="contact py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
+        <h3 class="title text-center mb-sm-4 mb-3">Coordinators</h3>
+       
+        <div class="row mb-lg-5 mb-md-4 mb-3">
+         @foreach (var coordinator in Model)
+         {
+            <div class="col-lg-3 col-md-4 footer_grid_left text-center">
+                <div class="thumbnail">
+                    <div class="contact_footer_grid_left text-center mb-3">
+                        <span class="fa fa-user"></span>
+                    </div>
+                    <p>
+                        <strong>@coordinator.name</strong>
+                        <br><span class="fa fa-map-marker"> </span> @coordinator.location
+                        <br /><span class="fa fa-phone"> </span> @coordinator.phone
+                    </p>
+                    <hr />
+                </div>
+            </div>
+         }
+        </div>
+       
+    </div>
+</section>
+<!--//contact  -->

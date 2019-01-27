@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = Model.title;
+}
+
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>Achievements</li>
+        </ul>
+    </div>
+</div>
+<!-- //short-->
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-10 col-md-10" style="min-height:350px; padding-top:20px; padding-bottom:30px;">
+            <h1> @Html.DisplayFor(model => model.title)</h1>
+            <hr />
+
+            <small><span class="fa fa-calendar"> </span> @Html.DisplayFor(model => model.datetime) </small>
+            <br />
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <br />
+            <div class="img img-responsive">
+                @if (Model.imgurl != null)
+                {
+                    <img class="img img-responsive" src="~/images/news/@Model.imgurl" style="max-height:470px;" />
+                }
+            </div>
+            <article>
+                @Html.Raw(Model.body)
+            </article>
+            <br />
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>

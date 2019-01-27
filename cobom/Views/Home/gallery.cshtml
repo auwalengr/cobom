@@ -1,0 +1,46 @@
+﻿@model IEnumerable<cobom.Models.gallary_picture>
+
+@{
+    ViewBag.Title = "gallery";
+}
+
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>Gallery</li>
+        </ul>
+    </div>
+</div>
+
+   <!--Gallery-->
+<section class="gallery py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+        <h3 class="title text-center mb-sm-4 mb-3">Our Gallery</h3>
+       
+        <div class="row grid gallery-info">
+           @foreach (var pictue in Model)
+           {
+            <div class="col-lg-6 col-md-6 gallery-grids p-0">
+                <div class="model-allery_effect">
+                    <a href="~/images/gallery/@pictue.imgurl" data-lightbox="example-set" data-title="@pictue.details.">
+                        <figure>
+                            <img src="~/images/gallery/@pictue.imgurl" alt=" " class="img-fluid">
+                        </figure>
+                    </a>
+                </div>
+            </div>
+           }
+             
+           
+        </div>
+    </div>
+</section>
+<!--//Gallery-->

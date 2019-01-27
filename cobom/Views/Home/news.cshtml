@@ -1,0 +1,61 @@
+﻿@model IEnumerable<cobom.Models.news>
+
+@{
+    ViewBag.Title = "news";
+}
+
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>Achievements</li>
+        </ul>
+    </div>
+</div>
+<!-- //short-->
+
+<main role="main">
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+
+                @foreach (var news in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+
+                            @if (news.imgurl != null)
+                            {
+                                <img class="img img-responsive" src="~/images/news/@news.imgurl" style="max-height:250px" />
+                            }
+
+
+                            <div class="card-body">
+                                <h3>@Html.ActionLink(news.title, "newsdetails", new { id = news.id })</h3>
+
+                                <br />
+                                <div class="align-items-left">
+
+                                    <span class="fa fa-calendar"> </span> <small class="text-muted"> @news.datetime.ToString("dd MMM yyyy") </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+

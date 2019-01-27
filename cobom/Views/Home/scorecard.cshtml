@@ -1,0 +1,77 @@
+﻿<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+@model IEnumerable<cobom.Models.newarchievementDetail>
+@{
+    ViewBag.Title = "Score Card";
+
+}
+
+@using Highsoft.Web.Mvc.Charts
+
+<div class="inner_page-banner one-img">
+</div>
+<!--//banner -->
+<!-- short -->
+<div class="using-border py-3">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="~/home">Home</a>
+                <span>/ /</span>
+            </li>
+            <li>Electricity</li>
+        </ul>
+    </div>
+</div>
+
+@for (int i = 0; i < 3; i++)
+{
+
+  <h1>h</h1> 
+}
+
+@(Html.Highsoft().GetHighcharts(
+        new Highcharts
+        {
+            Chart = new Highsoft.Web.Mvc.Charts.Chart
+            {
+                PlotBackgroundColor = null,
+                PlotBorderWidth = null,
+                PlotShadow = new Shadow
+                {
+                    Enabled = false
+                }
+            },
+            Title = new Title
+            {
+                Text = "Fertilizer scorecard"
+            },
+            Tooltip = new Tooltip
+            {
+                PointFormat = "{series.name}: <b>{point.y} Plan(s)</b>"
+            },
+            PlotOptions = new PlotOptions
+            {
+                Pie = new PlotOptionsPie
+                {
+                    AllowPointSelect = true,
+                    Cursor = PlotOptionsPieCursor.Pointer,
+                    DataLabels = new PlotOptionsPieDataLabels
+                    {
+                        Enabled = true,
+                        Format = "<b>{point.name}</b>: {point.y} Plan(s) "
+                    }
+                }
+            },
+            Series = new List<Series>
+            {
+                new PieSeries
+                {
+                    Name = "Fertilizer plan",
+                    Data = @ViewData["pieData"] as List<PieSeriesData>
+                },
+
+            }
+        }
+        , "chart")
+)

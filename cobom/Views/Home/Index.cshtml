@@ -1,0 +1,369 @@
+﻿@model IEnumerable<cobom.Models.slide>
+    @using cobom.Models;
+@{
+    ViewBag.Title = "The Coalition of Buhari Osibanjo Movement";
+}
+<style>
+    .collapsed {
+        font-size:24px;
+    }
+</style>
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+          @foreach (var slide in Model)
+          { 
+            <li>
+                <div class="slider-img " style="background: url(../images/@slide.imgurl)no-repeat center;}">
+                    <div class="container">
+                        <div class="slider-info">
+                            <div class="txt-caption">
+                                <div class="binner-mid">
+                                    <h4>
+                                       @slide.title
+                                    </h4>
+                                </div>
+                                <p>@slide.body </p>
+                                <div class="outs_more-buttn">
+                                   @if (slide.url != null)
+                                   {
+                                    <a href="@slide.url">Read More</a>
+                                   }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+          }
+        </ul>
+    </div>
+    <!-- This is here just to demonstrate the callbacks -->
+    <!-- <ul class="events">
+       <li>Example 4 callback events</li>
+       </ul>-->
+  <div class="clearfix"></div>
+</div>
+@*  *@
+<div class="text-center" style="margin-top:0px">
+    <h3>Welcome to COBOM Join us today</h3>
+    
+</div>
+    <!-- //short-->
+    <section class="service-one py-lg-4 py-md-3 py-sm-3 py-3" id="service">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-7 service-w3layouts-top">
+                  
+                    <h3>WHY COBOM SUPPORT</h3>
+                    @*  *@
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="collapsed text-dark" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                       <span class="fa fa-plus-circle"></span> Economy
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    President Buhari administration’s priority sectors of agriculture and solid minerals maintained consistent growth throughout the recession. It said inflation has fallen for the fifteenth consecutive month while the nation’s external reserves are at their highest levels in five years, currently double the size of October 2016.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed text-dark" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span class="fa fa-plus-circle"></span> Support To State Governments
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    The Buhari administration also said it has extended more than N1.9 trillion to state governments, to enable them meet their salary and pension obligations, especially in the face of dwindling oil revenues over the last two years. The support, it said, has come in the form of Budget Support Facility (Total of N606.55 billion extended to the states as of May 2018; in exchange for reforms in budgeting, IGR, debt management, overheads, etc.) Others are Paris Club refunds, infrastructure loans as well as loan restructuring for facilities with commercial banks.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed text-dark" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <span class="fa fa-plus-circle"></span> Investing In People
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    The Buhari administration says all four components of the Social Investment Programme (SIP) have now taken off. “The SIP is the largest and most ambitious social safety net programme in the history of Nigeria, with N140 billion released and more than 9 million direct beneficiaries so far,” it said. Under the SIP, government said 200,000 N-Power beneficiaries are currently participating and receiving N30,000 in monthly stipends. It said another 300,000 new enrolments are being processed, to take the number to 500,000 this year.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*  *@
+                </div>
+                <div class="col-lg-5 ser-two-imgs">
+                    <div class="service-img">
+                        <img src="~/images/pmb2.jpg" alt="" class="img-fluid" style="max-height:350px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="clearfix"></div>
+    <!-- service -->
+    <section class="service py-lg-4 py-md-3 py-sm-3 py-3">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-4">
+            <div class="title-hole-all">
+                <h4 class="title mb-2 text-center">President Muhammadu Buhari Quote</h4>
+                <div class="line-w3ls-title text-center mb-md-5 mb-sm-4 mb-3">
+                    <blockquote>“if we don’t kill corruption, this corruption will kill us.”</blockquote>
+                </div>
+                <div class="row its-abt-info text-center">
+                    
+                    @foreach (var message in ViewBag.message)
+                    {
+
+                   <div class="col-lg-4 col-md-6 col-sm-6 ser-list-w3layouts">
+                        <div class="ser-inner-sub">
+                            <h4>@message.title</h4>
+                            <div class="service-icon-list mt-3">
+                                <span class="text-dark fa @message.fa mb-3" aria-hidden="true"></span>
+                                <p>@message.body </p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                   
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//service -->
+<!-- achievement-->
+<main role="main">
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="text-center col-lg-12">
+                    <p class="h4 text-info"> Some of This administration success stories</p>
+                </div> 
+                <br />
+
+                @foreach (var item in ViewBag.archiement)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+
+                            <img src="~/images/@item.imgurl" />
+                            <div class="card-body">
+                                <h4>@item.type</h4>
+                                <p class="card-text">@item.details</p>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                   
+             
+              
+             
+            </div>
+        </div>
+    </div>
+
+</main>
+
+@* score card *@
+<section class="about py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+        <div class="jst-abut-wls mb-lg-4 mb-md-3 mb-3 ">
+            <h5 class="text-center">
+                Score Card
+            </h5>
+
+        </div>
+        <div class="row its-abt-info">
+            <div class="col-lg-4 col-md-4 col-sm-12 about-list-w3layouts">
+                <h3>Electricity</h3>
+                <div class="abt-txt-sub">
+                    @{ 
+                        ApplicationDbContext db = new ApplicationDbContext();
+                    }
+                    @foreach (string date in ViewBag.category)
+                    {
+                        <h4>@date</h4>
+                        <div class="txt-para-list mt-3">
+                            <ul>
+        @{
+            
+            var list = db.newarchievementDetails.Include("newarchievement").Where(d => d.newarchievement.type == "Electricity" & d.date == date);
+           // var  scorecard = db.newarchievementDetails.Include(x => x.newarchievement).Where(d => d.newarchievement.type == "Electricity");
+        }
+
+        @foreach (var item in list)
+        {
+
+            <li>@item.name @item.amount@item.newarchievement.unit <br /></li>
+
+        }
+    </ul>
+                        </div>
+                        <hr />
+                                    }
+
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 about-list-w3layouts">
+                @{
+                    List<string> cats = new List<string>();
+                    foreach (string item in ViewBag.category)
+                    {
+                        cats.Add(item);
+                    }
+
+                }
+                <script src="http://code.highcharts.com/highcharts.js"></script>
+                @using Highsoft.Web.Mvc.Charts
+
+
+                @(Html.Highsoft().GetHighcharts(
+        new Highcharts
+        {
+            Title = new Title
+            {
+                Text = "Electricity Score card chart"
+            },
+
+
+            XAxis = new List<XAxis>
+            {
+                new XAxis
+                {
+                    Title = new XAxisTitle
+                    {
+                        Text = null
+                    },
+                    Categories = cats
+                }
+            },
+            YAxis = new List<YAxis>
+            {
+                new YAxis
+                {
+                    Min = 0,
+                    Title = new YAxisTitle
+                    {
+                        Text = "Electricity (Mega Watts)",
+                        Align = YAxisTitleAlign.High
+                    }
+                }
+            },
+            Tooltip = new Tooltip
+            {
+                ValueSuffix = " MW"
+            },
+            PlotOptions = new PlotOptions
+            {
+                Bar = new PlotOptionsBar
+                {
+                    DataLabels = new PlotOptionsBarDataLabels
+                    {
+                        Enabled = true
+                    }
+                }
+            },
+            Legend = new Legend
+            {
+                Layout = LegendLayout.Vertical,
+                Align = LegendAlign.Right,
+                VerticalAlign = LegendVerticalAlign.Top,
+
+                X = -40,
+                Y = 100,
+                Floating = true,
+                BorderWidth = 1,
+                BackgroundColor = "white",
+                Shadow = new Shadow
+                {
+                    Enabled = true
+                }
+            },
+            Credits = new Credits
+            {
+                Enabled = false
+            },
+            Series = new List<Series>
+            {
+                new BarSeries
+                {
+                    Name = "Generation",
+                    Data = @ViewData["generationData"] as List<BarSeriesData>
+                },
+                new BarSeries
+                {
+                    Name = "Transmission",
+                    Data = @ViewData["transmissionData"] as List<BarSeriesData>
+                },
+                new BarSeries
+                {
+                    Name = "Distribution",
+                    Data = @ViewData["distributionData"] as List<BarSeriesData>
+                }
+            }
+        }
+        , "chart")
+                )
+            </div>
+        </div>
+
+    </div>
+</section>
+@*  *@
+<!-- //-->
+    <!--blog-->
+    <section class="blog py-lg-4 py-md-3 py-sm-3 py-3 bg-info">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-4">
+            @*<h3 class="title mb-2 text-center">Twitter Feed</h3>*@
+            @*<div class="line-w3ls-title text-center mb-md-5 mb-sm-4 mb-3">
+               
+            </div>*@
+            <a class="twitter-timeline" data-height="800" data-dnt="true" href="https://twitter.com/Cobom2019?ref_src=twsrc%5Etfw">Tweets feeds</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            @*@foreach (var item in ViewBag.news)
+            {
+
+           
+            <div class="row blog-bloged-about mb-lg-5 mb-md-4 mb-3">
+                <div class="col-lg-4 blog-wed-img">
+                    <img src="~/images/news/@item.imgurl" class="img-thumbnail" alt="">
+                </div>
+                <div class="col-lg-8 blog-wthree-info">
+                    <div class="blog-matter mb-3">
+                        <h6><a href="#">@item.title</a></h6>
+                    </div>
+                    <div class="news-date mt-3">
+                        <ul>
+                            <li><span class="fa fa-calendar" aria-hidden="true"></span><a href="blog.html">@item.datetime</a></li>
+                            <li><span class="fa fa-tags"></span><a href="blog.html">0 Tags</a></li>
+                            <li><span class="fa fa-comments"></span><a href="blog.html">0 Comments</a></li>
+                        </ul>
+                    </div>
+                    <div class="event-blog-w3pvt mt-lg-5 mt-md-4 mt-3">
+                        <p>@item.body </p>
+                    </div>
+                </div>
+            </div>
+            }*@
+        </div>
+    </section>
+    <!--//blog-->

@@ -1,0 +1,109 @@
+﻿@model cobom.Models.slide
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+    <h2>Create</h2>
+    <div class="col-lg-6">
+        @using (Html.BeginForm("create", "slides", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>slide</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.body, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                      
+                        @Html.EditorFor(model => model.body, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.body, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.imgurl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.imgurl, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                        @Html.ValidationMessageFor(model => model.imgurl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                 
+                    @*  *@
+                    @Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control"} })
+                       
+                        @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+
+                        <h4>Select from News or Achievements</h4>
+                        <p><strong>News</strong></p>
+                        <ul>
+                            
+                            @foreach (var item in ViewBag.news)
+                            {
+                                <li> <a href="#" onclick="seturl('newsdetails', '@item.id')">@item.title</a></li>
+                            }
+                        </ul>
+                        <p><strong>Downloads</strong></p>
+                        <ul>
+
+                            @foreach (var item in ViewBag.download)
+                            {
+                                <li> <a href="#" onclick="seturl('download', '@item.Name')">@item.Name</a></li>
+                            }
+                        </ul>
+                        <p><strong>Achievements</strong></p>
+                    </div>
+                </div>
+              
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+
+    <!-- Modal -->
+ <!-- Button trigger modal -->
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+    function seturl(type, id) {
+        if (type == "newsdetails") {
+            var url = "home\\" + type + "\\" + id;
+            $('#url').val(url);
+        } else if (type == "download") {
+            var url = "~/download/" + id;
+            $('#url').val(url);
+        }
+       
+     
+    }
+</script>
+
